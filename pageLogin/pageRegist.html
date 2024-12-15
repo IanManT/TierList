@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration</title>
+    <link rel="stylesheet" href="cssRegist.css">
+</head>
+<body>
+    <div class="container">
+        <h2>Registration</h2>
+        <form id="registrationForm" method="POST" action="userRegist.php">
+            <div>
+                <label for="regUsername">Username:</label>
+                <input type="text" id="regUsername" name ="regUsername" required>
+            </div>
+            <div>
+                <label for="regPassword">Password:</label>
+                <input type="password" id="regPassword" name="regPassword" required>
+            </div>
+            <div>
+                <label for="regEmail">Email:</label>
+                <input type="email" id="regEmail" name="regEmail" required>
+            </div>
+            <button type="submit">Register</button>
+            <p>Already have an account? <a href="pageLogin.php">Login</a></p>
+        </form>
+    </div>
+    <script src="Regist.js"></script>
+</body>
+</html>
