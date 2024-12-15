@@ -1,16 +1,19 @@
 <?php
+// Assuming connection to database is already established
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    $username = $_POST['username'] ?? $_POST['regUsername'];
-    $password = $_POST['password'] ?? $_POST['regPassword'];
-    $email = $_POST['regEmail'] ?? '';
+    $username = $_POST['username'];
+    $password = $_POST['password'];
 
-    // Here you would typically hash the password and save the user to a database
-    // For example:
-    // $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
-    // Save $username, $hashedPassword, and $email to the database
+    // Hash the password before storing it in the database
+    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
 
-    // Redirect to login page after successful registration
-    header("Location: pageLogin.php");
-    exit();
+    // Insert the hashed password into the database
+    $sql = "INSERT INTO users (username, password) VALUES ('$username', '$hashed_password')";
+    if ($conn->query($sql) === TRUE) {
+        echo "Registration successful!";
+    } else {
+        echo "Error: " . $sql . "<br>" . $conn->error;
+    }
 }
 ?>
